@@ -22,8 +22,8 @@
    <h1 style="color:Green"> Account Name : {{account.Name}}</h1>
  
     <p>
-
-    <b>Search by any fields (email,first,last etc)  : </b>&nbsp;&nbsp;&nbsp;<input ng-model="query" />
+    
+    <b> <font color="red"> Search by any fields (email, first, last etc)  :</font> </b>&nbsp;&nbsp;&nbsp;<input ng-model="query" />
     </p>
     
     

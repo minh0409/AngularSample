@@ -9,6 +9,6 @@ global with sharing class AngularController {
  
    global static String getContacts() {
        return JSON.serialize([select FirstName , LastName, Email, Phone
-           from contact where accountId = :accountId]);
+           from contact where accountId = :accountId order by LastName]);
    }
 }
