@@ -8,40 +8,42 @@
   
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
-   <script src="https://kendo.cdn.telerik.com/2016.3.1028/js/kendo.all.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-grid/3.2.9/ui-grid.min.js"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-grid/3.2.9/ui-grid.min.css"/>
 
    <script>
-     var angularApp = angular.module('angularApp', [ "kendo.directives" ]);
+     var angularApp = angular.module('angularApp', ['ui.grid']);
      angularApp.controller('DemoCtrl', function ($scope) {
          $scope.account = {!account}
          $scope.contacts = {!contacts}
+         $scope.gridOptions = {
+            enableSorting: true,
+            enableFiltering: true,
+            columnDefs: [
+              { field: 'FirstName'},
+              { field: 'LastName'},
+              { field: 'Email'},
+              { field: 'Phone'}       
+            ]
+          };
+          
+         $scope.gridOptions.data = {!contacts};
      });
    </script>
+   <style>
+       .grid {
+     height: 100%; width: 100%;
+    }
+   </style>
 </head>
 <body class="container" ng-controller="DemoCtrl">
             
    <h1 style="color:Green"> Account Name : {{account.Name}}</h1> 
-   <p>       
-   <b> <font color="red"> Search by any fields (email, first, last etc)  :</font> </b>&nbsp;&nbsp;&nbsp;<input ng-model="query" />
-    </p>
-    
-    
-   <table class="table table-bordered">
-     <tr>
-       <th>First Name</th>
-       <th>Last Name</th>
-       <th>Email</th>
-       <th>Phone</th>
-       <th>Id</th>
-     </tr>
-     <tr ng-repeat="contact in contacts | filter:query">          
-       <td>{{contact.FirstName}}</td>
-       <td>{{contact.LastName}}</td>
-       <td>{{contact.Email}}</td>
-       <td>{{contact.Phone}}</td>
-       <td>{{contact.Id}}</td>
-     </tr>
-   </table>
+
+   <div ui-grid="gridOptions" class="grid"></div>
+   
+   
+
 </body>
 </html>
 </apex:page>
