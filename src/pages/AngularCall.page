@@ -15,7 +15,6 @@
      var angularApp = angular.module('angularApp', ['ui.grid']);
      angularApp.controller('DemoCtrl', function ($scope) {
          $scope.account = {!account}
-         $scope.contacts = {!contacts}
          $scope.gridOptions = {
             enableSorting: true,
             enableFiltering: true,
