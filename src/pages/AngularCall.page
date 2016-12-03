@@ -1,29 +1,28 @@
 <apex:page Controller="AngularController">
-<html lang="en" ng-app="demoApp">
+<html lang="en" ng-app="angularApp">
 <head>
    <meta charset="utf-8"/>
    <meta name="viewport" content="width=device-width, initial-scale=1"/>
    <title>Angular Demo</title>
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
-   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
   
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
+   <script src="https://kendo.cdn.telerik.com/2016.3.1028/js/kendo.all.min.js"></script>
+
    <script>
-     // define the app
-     var demoApp = angular.module('demoApp', []);
-     // add the controller
-     demoApp.controller('DemoCtrl', function ($scope) {
+     var angularApp = angular.module('angularApp', [ "kendo.directives" ]);
+     angularApp.controller('DemoCtrl', function ($scope) {
          $scope.account = {!account}
          $scope.contacts = {!contacts}
      });
    </script>
 </head>
 <body class="container" ng-controller="DemoCtrl">
-    
-   <h1 style="color:Green"> Account Name : {{account.Name}}</h1>
- 
-    <p>
-    
-    <b> <font color="red"> Search by any fields (email, first, last etc)  :</font> </b>&nbsp;&nbsp;&nbsp;<input ng-model="query" />
+            
+   <h1 style="color:Green"> Account Name : {{account.Name}}</h1> 
+   <p>       
+   <b> <font color="red"> Search by any fields (email, first, last etc)  :</font> </b>&nbsp;&nbsp;&nbsp;<input ng-model="query" />
     </p>
     
     
