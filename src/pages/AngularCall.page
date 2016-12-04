@@ -12,12 +12,15 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-grid/3.2.9/ui-grid.min.css"/>
 
    <script>
-     var angularApp = angular.module('angularApp', ['ui.grid']);
+     var angularApp = angular.module('angularApp', ['ui.grid' , 'ui.grid.pagination']);
      angularApp.controller('DemoCtrl', function ($scope) {
          $scope.account = {!account}
          $scope.gridOptions = {
             enableSorting: true,
             enableFiltering: true,
+            enablePaginationControls: true,
+            paginationPageSizes: [5, 10, 15],
+            paginationPageSize: 10,
             columnDefs: [
               { field: 'FirstName'},
               { field: 'LastName'},
@@ -39,9 +42,8 @@
             
    <h1 style="color:Green"> Account Name : {{account.Name}}</h1> 
 
-   <div ui-grid="gridOptions" class="grid"></div>
-   
-   
+   <div ui-grid="gridOptions" ui-grid-pagination="true" class="grid"></div>
+      
 
 </body>
 </html>
