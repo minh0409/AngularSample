@@ -1,14 +1,15 @@
 global with sharing class AngularController {
-   // hardcode an account id for demo purposes
    static String accountId = '00141000008yKcdAAE';
  
-   global static String getAccount() {
-       return JSON.serialize([select name
-           from account where id = :accountId][0]);
+   global String getAccount() {
+       List<Account> lstAccount = [Select Name from account where id = :accountId];        
+       return JSON.serialize(lstAccount);
    }    
  
-   global static String getContacts() {
-       return JSON.serialize([select FirstName , LastName, Email, Phone
-           from contact where accountId = :accountId order by LastName]);
+   global String getContacts() {
+       return JSON.serialize([select FirstName , LastName, Email, Phone from contact where accountId = :accountId ]);
    }
+   
+
+ 
 }
