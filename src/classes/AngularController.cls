@@ -2,8 +2,7 @@ global with sharing class AngularController {
    static String accountId = '00141000008yKcdAAE';
  
    global String getAccount() {
-       List<Account> lstAccount = [Select Name from account where id = :accountId];        
-       return JSON.serialize(lstAccount);
+         return JSON.serialize([select name from account where id = :accountId][0]);
    }    
  
    global String getContacts() {
