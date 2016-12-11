@@ -13,8 +13,24 @@
 
    <script>
      var angularApp = angular.module('angularApp', ['ui.grid' , 'ui.grid.pagination']);
+     
      angularApp.controller('DemoCtrl', function ($scope) {
-         $scope.account = {!account}
+        
+         var accountName =  'Angular 1.6 Sample';
+        
+         // remoting get Account
+         Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.AngularController.getAccountRemoting}',
+         accountName ,
+         function x(result, event){
+         	if(event.status) {
+
+         		$scope.account = result;
+         		$scope.$apply();
+         		
+         	}
+         },{escape:true} );
+         
+         
          $scope.gridOptions = {
             enableSorting: true,
             enableFiltering: true,
@@ -29,7 +45,19 @@
             ]
           };
           
-         $scope.gridOptions.data = {!contacts};
+          // remoting get Contacts
+          Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.AngularController.getContactsRemoting}',
+          accountName ,
+          function x(contactResult, event){
+         	if(event.status) {
+
+         		$scope.gridOptions.data = contactResult;
+         		$scope.$apply();
+         		
+         	}
+         },{escape:true} );
+         
+        
      });
    </script>
    <style>
