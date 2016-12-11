@@ -21,7 +21,7 @@
          // remoting get Account
          Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.AngularController.getAccountRemoting}',
          accountName ,
-         function x(result, event){
+         function callback (result, event){
          	if(event.status) {
 
          		$scope.account = result;
@@ -48,7 +48,7 @@
           // remoting get Contacts
           Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.AngularController.getContactsRemoting}',
           accountName ,
-          function x(contactResult, event){
+          function callback (contactResult, event){
          	if(event.status) {
 
          		$scope.gridOptions.data = contactResult;
